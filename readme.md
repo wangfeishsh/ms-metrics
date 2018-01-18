@@ -43,3 +43,32 @@
   "counter.status.200.env": 1
 }
 ```
+
+
+## JMX
+
+![每个Java开发者都应该知道的5个JDK工具](http://blog.csdn.net/tswc1990/article/details/41344635
+![配置Java远程监控授权（Java Mission Control）](http://blog.csdn.net/nysyxxg/article/details/51150636)
+
+oracle java mission control
+
+```
+jmc
+```
+
+
+下面介绍下时序数据库的一些基本概念(不同的时序数据库称呼略有不同)。
+
+metric: 度量，相当于关系型数据库中的table。
+
+data point: 数据点，相当于关系型数据库中的row。
+
+timestamp：时间戳，代表数据点产生的时间。
+
+field: 度量下的不同字段。比如位置这个度量具有经度和纬度两个field。一般情况下存放的是会随着时间戳的变化而变化的数据。
+
+tag: 标签，或者附加信息。一般存放的是并不随着时间戳变化的属性信息。timestamp加上所有的tags可以认为是table的primary key。
+
+如下图，度量为Wind，每一个数据点都具有一个timestamp，两个field：direction和speed，两个tag：sensor、city。它的第一行和第三行，存放的都是sensor号码为95D8-7913的设备，属性城市是上海。随着时间的变化，风向和风速都发生了改变，风向从23.4变成23.2;而风速从3.4变成了3.3。
+
+![](http://img3.donews.com/uploads/img3/img_pic_1494301251_1.png)
