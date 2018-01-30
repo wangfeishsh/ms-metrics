@@ -1,12 +1,9 @@
 package com.bao.msmetrics.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.bao.msmetrics.model.TestModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.endpoint.SystemPublicMetrics;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletInputStream;
@@ -19,10 +16,20 @@ import java.io.IOException;
 @RestController
 @Slf4j
 public class MyController {
-//    @Autowired
+
+
+    @Autowired
+    SystemPublicMetrics systemPublicMetrics;
+
+    //    @Autowired
 //    HttpServletRequest servletRequest;
     @PostMapping("/v1/test")
     public void test(HttpServletRequest servletRequest) throws IOException {
+
+
+        systemPublicMetrics.metrics().stream().forEach(node -> {
+            System.out.println(node.getName() + ":" + node.getValue());
+        });
 //        log.info(JSON.toJSONString(testModel));
         ServletInputStream ris = servletRequest.getInputStream();
         StringBuilder content = new StringBuilder();

@@ -1,20 +1,15 @@
 package com.bao.msmetrics;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import io.prometheus.client.spring.boot.EnablePrometheusEndpoint;
+import io.prometheus.client.spring.boot.EnableSpringBootMetricsCollector;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.autoconfigure.ExportMetricWriter;
-import org.springframework.boot.actuate.metrics.export.MetricExportProperties;
-import org.springframework.boot.actuate.metrics.jmx.JmxMetricWriter;
-import org.springframework.boot.actuate.metrics.repository.redis.RedisMetricRepository;
-import org.springframework.boot.actuate.metrics.writer.MetricWriter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.jmx.export.MBeanExporter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 
+@EnablePrometheusEndpoint
+@EnableSpringBootMetricsCollector
 @EnableScheduling
 @SpringBootApplication
 public class MsMetricsApplication {
@@ -27,7 +22,7 @@ public class MsMetricsApplication {
 //	MetricWriter metricWriter() {
 //		return new StatsdMetricWriter(prefix, "localhost", 8125);
 //	}
-
+//
 //    @Autowired
 //    RedisConnectionFactory connectionFactory;
 //
@@ -37,12 +32,18 @@ public class MsMetricsApplication {
 //        return new RedisMetricRepository(connectionFactory,
 //                export.getRedis().getPrefix(), export.getRedis().getKey());
 //    }
+//
+//    @Bean
+//    @ExportMetricWriter
+//    MetricWriter metricWriter(MBeanExporter exporter) {
+//        return new JmxMetricWriter(exporter);
+//    }
 
-    @Bean
-    @ExportMetricWriter
-    MetricWriter metricWriter(MBeanExporter exporter) {
-        return new JmxMetricWriter(exporter);
-    }
+//    @Bean
+//    @ExportMetricWriter
+//    GaugeWriter gaugeWriter(){
+//        return new OpenTsdbGaugeWriter();
+//    }
 
     public static void main(String[] args) {
         SpringApplication.run(MsMetricsApplication.class, args);

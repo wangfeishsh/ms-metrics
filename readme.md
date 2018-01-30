@@ -1,4 +1,5 @@
-![Spring Boot Actuator监控端点小结](http://blog.didispace.com/spring-boot-actuator-1/)
+[Spring Boot Actuator监控端点小结](http://blog.didispace.com/spring-boot-actuator-1/)
+[Grafana+Prometheus系统监控之SpringBoot](https://yq.aliyun.com/articles/272542)
 
 ```
 {
@@ -72,3 +73,7 @@ tag: 标签，或者附加信息。一般存放的是并不随着时间戳变化
 如下图，度量为Wind，每一个数据点都具有一个timestamp，两个field：direction和speed，两个tag：sensor、city。它的第一行和第三行，存放的都是sensor号码为95D8-7913的设备，属性城市是上海。随着时间的变化，风向和风速都发生了改变，风向从23.4变成23.2;而风速从3.4变成了3.3。
 
 ![](http://img3.donews.com/uploads/img3/img_pic_1494301251_1.png)
+
+gauge.*：HTTP请求的性能指标之一，它主要用来反映一个绝对数值。比如上面示例中的gauge.response.hello: 5，它表示上一次hello请求的延迟时间为5毫秒。
+counter.*：HTTP请求的性能指标之一，它主要作为计数器来使用，记录了增加量和减少量。如上示例中counter.status.200.hello: 11，它代表了hello请求返回200状态的次数为11。
+对于gauge.*和counter.*的统计，这里有一个特殊的内容请求star-star，它代表了对静态资源的访问。这两类度量指标非常有用，我们不仅可以使用它默认的统计指标，还可以在程序中轻松的增加自定义统计值。
