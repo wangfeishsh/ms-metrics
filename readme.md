@@ -77,3 +77,9 @@ tag: 标签，或者附加信息。一般存放的是并不随着时间戳变化
 gauge.*：HTTP请求的性能指标之一，它主要用来反映一个绝对数值。比如上面示例中的gauge.response.hello: 5，它表示上一次hello请求的延迟时间为5毫秒。
 counter.*：HTTP请求的性能指标之一，它主要作为计数器来使用，记录了增加量和减少量。如上示例中counter.status.200.hello: 11，它代表了hello请求返回200状态的次数为11。
 对于gauge.*和counter.*的统计，这里有一个特殊的内容请求star-star，它代表了对静态资源的访问。这两类度量指标非常有用，我们不仅可以使用它默认的统计指标，还可以在程序中轻松的增加自定义统计值。
+
+
+## Prometheus
+[Prometheus data model](https://prometheus.io/docs/concepts/data_model/)
+
+timestamp metric labels

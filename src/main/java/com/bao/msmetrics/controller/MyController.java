@@ -21,6 +21,11 @@ public class MyController {
     @Autowired
     SystemPublicMetrics systemPublicMetrics;
 
+    @PostMapping("/v1/metric")
+    public void metric(){
+
+    }
+
     //    @Autowired
 //    HttpServletRequest servletRequest;
     @PostMapping("/v1/test")
