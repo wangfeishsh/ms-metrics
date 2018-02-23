@@ -21,9 +21,9 @@ public class MyController {
     @Autowired
     SystemPublicMetrics systemPublicMetrics;
 
-    @PostMapping("/v1/metric")
+    @PostMapping("/v1/metric/dd")
     public void metric(){
-
+        System.out.println("this");
     }
 
     //    @Autowired
