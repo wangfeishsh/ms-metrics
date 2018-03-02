@@ -1,5 +1,6 @@
 package com.bao.msmetrics;
 
+import com.soundcloud.prometheus.hystrix.HystrixPrometheusMetricsPublisher;
 import io.prometheus.client.spring.boot.EnablePrometheusEndpoint;
 import io.prometheus.client.spring.boot.EnableSpringBootMetricsCollector;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import java.util.concurrent.ConcurrentHashMap;
 
 @EnablePrometheusEndpoint
 @EnableSpringBootMetricsCollector
@@ -46,6 +48,9 @@ public class MsMetricsApplication {
 //    }
 
     public static void main(String[] args) {
+
+        HystrixPrometheusMetricsPublisher.register("ms-metrics");
+
         SpringApplication.run(MsMetricsApplication.class, args);
     }
 }

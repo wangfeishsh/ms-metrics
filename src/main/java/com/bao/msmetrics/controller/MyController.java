@@ -31,7 +31,7 @@ public class MyController {
     //    @Autowired
 //    HttpServletRequest servletRequest;
     @PostMapping("/v1/test")
-    public void test(HttpServletRequest servletRequest) throws IOException {
+    public String test(HttpServletRequest servletRequest) throws IOException {
 
 
         systemPublicMetrics.metrics().stream().forEach(node -> {
@@ -47,5 +47,6 @@ public class MyController {
         }
         String strcont = content.toString();// 内容
         System.out.println(strcont);
+        return strcont;
     }
 }

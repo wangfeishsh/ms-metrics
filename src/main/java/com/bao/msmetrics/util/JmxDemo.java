@@ -4,6 +4,9 @@ import com.bao.msmetrics.model.User;
 
 import javax.management.*;
 import java.lang.management.ManagementFactory;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by baochunyu on 2018/1/18.
@@ -14,7 +17,12 @@ public class JmxDemo {
 
         MBeanServer beanServer = ManagementFactory.getPlatformMBeanServer();
         ObjectName objectName = new ObjectName("jmxdemo:type=User");
+        List<String> list= new ArrayList<>();
+        for(int i =0; i<100000;i++){
+            list.add(UUID.randomUUID().toString());
+        }
         User user = new User();
+        user.setList(list);
         beanServer.registerMBean(user, objectName);
         String oldusername = null;
         String oldpassword = null;

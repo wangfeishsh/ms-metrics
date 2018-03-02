@@ -83,3 +83,6 @@ counter.*：HTTP请求的性能指标之一，它主要作为计数器来使用�
 [Prometheus data model](https://prometheus.io/docs/concepts/data_model/)
 
 timestamp metric labels
+
+[tomcat access log pattern](http://blog.csdn.net/lanmo555/article/details/40430985)
+[logstash-patterns-core](https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns)
