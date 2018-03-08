@@ -1,8 +1,11 @@
 package com.bao.msmetrics.controller;
 
+import com.bao.msmetrics.listener.MyEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.endpoint.SystemPublicMetrics;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +22,18 @@ public class MyController {
 
 
     @Autowired
+    ApplicationContext applicationContext;
+
+    @Autowired
     SystemPublicMetrics systemPublicMetrics;
+
+    @GetMapping("/listen")
+    public String listen(){
+        MyEvent myEvent = new MyEvent(this);
+        myEvent.setName("dd");
+        applicationContext.publishEvent(myEvent);
+        return ";";
+    }
 
     @PostMapping("/v1/metric")
     public void metric(){

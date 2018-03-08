@@ -1,4 +1,4 @@
-package com.bao.msmetrics;
+package com.bao.msmetrics.service;
 
 import org.springframework.boot.actuate.endpoint.PublicMetrics;
 import org.springframework.boot.actuate.metrics.Metric;

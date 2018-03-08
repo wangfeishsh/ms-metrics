@@ -1,11 +1,13 @@
 package com.bao.msmetrics;
 
+import com.bao.msmetrics.listener.MyListener;
 import com.soundcloud.prometheus.hystrix.HystrixPrometheusMetricsPublisher;
 import io.prometheus.client.spring.boot.EnablePrometheusEndpoint;
 import io.prometheus.client.spring.boot.EnableSpringBootMetricsCollector;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -18,6 +20,11 @@ public class MsMetricsApplication {
 
     @Value("${spring.application.name:application}.${random.value:0000}")
     private String prefix = "metrics";
+
+    @Bean
+    public MyListener myListener(){
+        return new MyListener();
+    }
 
 //	@Bean
 //	@ExportMetricWriter
