@@ -86,3 +86,6 @@ timestamp metric labels
 
 [tomcat access log pattern](http://blog.csdn.net/lanmo555/article/details/40430985)
 [logstash-patterns-core](https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns)
+
+
+[Google Guava官方教程（中文版）](http://ifeve.com/google-guava/)
