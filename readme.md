@@ -89,3 +89,4 @@ timestamp metric labels
 
 
 [Google Guava官方教程（中文版）](http://ifeve.com/google-guava/)
+[ java 泛型详解](http://blog.csdn.net/s10461/article/details/53941091)

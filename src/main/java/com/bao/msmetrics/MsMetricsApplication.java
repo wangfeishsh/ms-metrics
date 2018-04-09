@@ -10,6 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Calendar;
 import java.util.concurrent.ConcurrentHashMap;
 
 @EnablePrometheusEndpoint
@@ -58,6 +63,18 @@ public class MsMetricsApplication {
 
         HystrixPrometheusMetricsPublisher.register("ms-metrics");
 
+        Calendar calendar =Calendar.getInstance();
         SpringApplication.run(MsMetricsApplication.class, args);
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        ZonedDateTime zonedDateTime = ZonedDateTime.now();
+
+        Clock c1 = Clock.systemUTC(); //系统默认UTC时钟（当前瞬时时间 System.currentTimeMillis()）
+        System.out.println(c1.millis()); //每次调用将返回当前瞬时时间（UTC）
+
+        LocalDateTime localDateTime1 = LocalDateTime.now(c1);
+
+        System.out.println(localDateTime1);
     }
 }
